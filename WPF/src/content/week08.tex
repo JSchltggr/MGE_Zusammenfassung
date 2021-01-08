@@ -2,4 +2,23 @@
 %! Date = 05/01/2021
 
 \section{Einführung WPF}
-Test
+\textbf{WPF:} Windows Presentation Foundation
+\subsection{Layout/Grössen}
+Layout in C\# oder XAML geschrieben. XAML ist jedoch leichter und kürzer.\\
+Als Grösseneinheit wird DIP (Device Independent Pixels) verwendet.
+\subsection{Hello WPF}
+\textbf{\textcolor{blue}{Dateien:}}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item App.xaml: Markup der Startup-Klasse
+    \item App.xaml.cs: Coed-Behind der Startup-Klasse
+    \item MainWindow.xaml: Markup des Hauptfensters
+    \item MainWindow.xaml.cs: Code-Behind des Hauptfensters
+    \item AssemblyInfo.cs: Projektspezifische Meta-Daten
+\end{itemize}
+\textbf{\textcolor{blue}{Deployment:}}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item Framework-Dependent Executable (FDE): .NET Core muss manuell installiert werden. Erzeugt sehr kleines Binary.
+    \item Self-Contained Deployment (SCD): .NET Core in Binary integriert. $\rightarrow$ Sehr grosses Binary (150MB für hello world)
+\end{itemize}
