@@ -2,3 +2,131 @@
 %! Date = 05/01/2021
 
 \section{Xamarin und Ausblick}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item Gemeinsame Codebasis in C\# / XAML oder F\# / XAML
+    \item Zielplattformen: Android, iOS, iPadOS, watchOS, tvOS, macOS
+    \item Bei der Kompilierung werden native Apps erzeugt
+    \item 100\%ige Verfügbarkeit der nativen APIs in C\#
+    \item Benutzung gewohnter .NET-Tools (Visual Studio, NuGet, etc.)
+\end{itemize}
+\subsection{Referenzarchitektur}
+\textbf{\textcolor{blue}{Shared Code:}}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item Von allen Plattformen (IOS, Android, .NET) geteilt
+    \item Idealerweise möglichst gross
+    \item Interfaces zur Abstraktion von Plattform Details
+    \item .NET Standard Projekt
+\end{itemize}
+\textbf{\textcolor{blue}{Platform Code:}}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item Ein Projekt pro Ziel-Plattform
+    \item Idealerweise möglichst klein
+    \item Implementierung der Plattform-Interfaces
+    \item Projekttyp abhängig von Ziel-Plattform
+\end{itemize}
+\subsection{Xamarin.Essentials}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item Sammlung an Platform Services
+    \begin{itemize}[topsep=0pt, leftmargin=4mm]
+        \setlength\itemsep{-0.3em}
+        \item Sensoren: Batterie, Kompass, ...
+        \item Schnittstellen: Berechtigungen, Telefon, ...
+        \item Utilities: Threading, Umrechnungen, ...
+    \end{itemize}
+    \item Spart viel Zeit und Nerven
+    \begin{itemize}[topsep=0pt, leftmargin=4mm]
+        \setlength\itemsep{-0.3em}
+        \item Eine Schnittstelle für alle Plattformen
+        \item Tipp: Trotzdem hinter Interface abstrahieren
+    \end{itemize}
+    \item Integration via NuGet
+\end{itemize}
+\subsection{Xamarin Traditional}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item Definition des UI pro Zielplattform
+    \begin{itemize}[topsep=0pt, leftmargin=4mm]
+        \setlength\itemsep{-0.3em}
+        \item Verwendung der nativen Konzepte
+        \item Android: XML, Activities, Fragmente, ...
+    \end{itemize}
+    \item Vorteile:
+    \begin{itemize}[topsep=0pt, leftmargin=4mm]
+        \setlength\itemsep{-0.3em}
+        \item Performance
+        \item Voller Funktionsumfang der Zielplattform
+        \item Portierbarkeit bestehender Apps
+    \end{itemize}
+    \item Nachteile:
+    \begin{itemize}[topsep=0pt, leftmargin=4mm]
+        \setlength\itemsep{-0.3em}
+        \item Mehrfache Implementierung des UI
+        \item Viele unterschiedliche Technologien
+    \end{itemize}
+\end{itemize}
+\subsection{Xamarin.Forms}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item Definition des UI im Shared Code
+    \begin{itemize}[topsep=0pt, leftmargin=4mm]
+        \setlength\itemsep{-0.3em}
+        \item Verwendung von XAML
+        \item Tipp: Eigenes Projekt für Xamarin.Forms
+    \end{itemize}
+    \item Vorteile:
+    \begin{itemize}[topsep=0pt, leftmargin=4mm]
+        \setlength\itemsep{-0.3em}
+        \item UI muss nur einmalig implementiert werden
+        \item Weniger Technologien
+    \end{itemize}
+    \item Nachteile:
+    \begin{itemize}[topsep=0pt, leftmargin=4mm]
+        \setlength\itemsep{-0.3em}
+        \item Einschränkungen bei UI Gestaltung
+        \item Leichte Einbussen bei Performance
+        \item Schwierige Portierbarkeit bestehender Apps
+    \end{itemize}
+\end{itemize}
+\subsubsection{Xamarin.Forms – Renderer}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item Xamarin.Forms enthält diverse Controls. Bsp: Button
+    \item Renderer-Klassen erledigen das Mapping von XAML-Controls auf native Controls. Ist Bestandteil von Xamarin.Forms. Bsp: ButtonRenderer für Android
+    \item Anpassungsmöglichkeiten: Styling, Eigene Renderer, Eigene XAML-Controls
+\end{itemize}
+\subsubsection{Xamarin.Forms – Vergleich zu WPF}
+\textbf{\textcolor{blue}{Gemeinsamkeiten:}}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item Aufteilung in XAML und Code Behind
+    \item Application-Klasse
+    \item Resources und Styles
+    \item Markup Extensions
+    \item Data Binding
+    \item Commands
+    \item Value Converter
+\end{itemize}
+\textbf{\textcolor{blue}{Unterschiede:}}
+\begin{itemize}[topsep=0pt, leftmargin=4mm]
+    \setlength\itemsep{-0.3em}
+    \item Control Libraries
+    \item Anzahl UI-Projekte
+    \item XAML Dialekt
+    \begin{itemize}[topsep=0pt, leftmargin=4mm]
+        \setlength\itemsep{-0.3em}
+        \item MainPage statt MainWindow
+        \item BindingContext statt DataContext
+        \item IsVisible statt Visibility
+        \item Margin mit Komma statt Spaces
+    \end{itemize}
+    \item Hilfsklassen in Xamarin.Forms
+    \begin{itemize}[topsep=0pt, leftmargin=4mm]
+        \setlength\itemsep{-0.3em}
+        \item Service Locator (Dependency Injection)
+        \item Navigation Service
+    \end{itemize}
+\end{itemize}
